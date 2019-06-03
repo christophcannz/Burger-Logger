@@ -1,0 +1,25 @@
+{{> header }}
+
+<div class="Burgers">
+    <div class="Favorites">
+        <h2>favorite Burgers</h2>
+        {{#each result}} {{#if is favorite}}
+        <div class ="burger" data-id="{{id}}">
+            <img src="PLACE BURGER IMAGE HERE" alt="">
+            <p>{{BURGER NAME HERE}}</p>
+            <button class="btn btn-default" data-id="{{id}}">Delete</button>
+        </div>
+    </div>
+    {{/if}} {{/each}}
+
+    <div class="notFavorites">
+        <h2>Non-Favorites</h2>
+        {{#each result}} {{#unless is_favorite}}
+        <div class="burger" data-id="{{id}}">
+            <img src"PLACE BRUGER IMAGE HERE" alt="">
+            <p>{{burger_name}}</p>
+            <button class="btn btn-default" data-id="{{id}}">Delete</button>
+        </div>
+        {{/unless}} {{/each}}
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.jumbotron {
+    background-color: bisque;
+    background-position: right;
+    color: tomato;
+    margin-top: 5%;
+}
+
+#newburger {
+    color: black;
+}
+
+#leftside {
+    background-color: bisque;
+    color: tomato;
+    text-align: center;
+    font-size: 10pt;
+}
+
+#rightside {
+    background-color: bisque;
+    color: tomato;
+    text-align: center;
+    font-size: 10pt;
+}
