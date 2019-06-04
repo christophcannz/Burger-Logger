@@ -1,24 +1,32 @@
-// Import the ORM to create functions that will interact with the database.
-var orm = require("../config/orm.js");
+$(function () {
+    $(".create-form").on("submit", function (event) {
+        event.preventDefault();
 
-var burger = {
-  all: function(cb) {
-    orm.selectAll("burgers", function(res) {
-      cb(res);
-    });
-  },
-  // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.create("burgers", cols, vals, function(res) {
-      cb(res);
-    });
-  },
-  update: function(objColVals, condition, cb) {
-    orm.update("burgers", objColVals, condition, function(res) {
-      cb(res);
-    });
-  }
-};
+        var newBurger = {
+            burger_name: $("#newburger").val().trim(), enjoyed: 0
+        };
 
-// Export the database functions for the controller (catsController.js).
-module.exports = burger;
+        $.ajax("/api/burger.js", {
+            type: "POST",
+            data: newBurger
+        }).then(function () {
+            console.log("Add a burger");
+            location.reload();
+        });
+    });
+    $(".eatburger").on("click", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var enjoyedAt = {
+            enjoyed: 1
+        };
+        $.ajax("/api/burgers/" + id, {
+            type: "put",
+            data: "enjoyedAt",
+        }).then(function () {
+            console.log("Burger Enjoyed");
+            location.reload();
+        });
+    });
+
+});
