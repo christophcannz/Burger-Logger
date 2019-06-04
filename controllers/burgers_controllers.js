@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const orm = require('../db/config/orm.js');
+const orm = require('../config/orm.js');
 
 router.get("/", function (req, res) {
     orm.selectAll(function (error,burgers){
@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
             });
         }    
         console.log('burgers: ', burgers);
-        res.render("index", { burgers});
+        res.render("index", {burgers});
     });
 });
 
